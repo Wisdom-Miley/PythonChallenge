@@ -6,20 +6,20 @@ total_votes = 0
 candidates = []
 votes_Per_Candidates = []
 
-# Set path for file
-csvpath = Path("PythonChallenge","Pyroll","election_data.csv")
+# Set path for csvfile
+csvpath = Path("PythonChallenge","Pyroll","Resources","election_data.csv")
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     next(csvreader,None) 
 
 # create through the election result in order 
 
-    for row in csvreader:
+   for row in csvreader:
         total_votes += 1
         if total_votes == 1:
             candidates.append(row[2])
             votes_Per_Candidates.append(1)
-        else:
+         else:
             try:
                 icandidate = candidates.index(row[2])
                 votes_Per_Candidates[icandidate] += 1
@@ -28,7 +28,8 @@ with open(csvpath, newline='') as csvfile:
                 votes_Per_Candidates.append(1)
                 
                 
-# print statement in order 
+# print statement in order  
+# the most votes percentage convert to the result 
 results = []
 results.append("Election Results\n-------------------------")
 results.append(f"Total Votes: {total_votes}\n-------------------------")
@@ -44,7 +45,7 @@ for i in range(len(candidates)):
 
 results.append(f"-------------------------\nWinner: {winner}\n-------------------------")
 
-#print election results in txt 
+#print election results in .txt 
 filename = 'Electtion Results.txt'
 with open(filename, 'w') as file:
     for result in results:
