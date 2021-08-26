@@ -1,7 +1,7 @@
 import os
 import csv
 from pathlib import Path
-
+# Create variable to the list 
 total_votes = 0
 candidates = []
 votes_Per_Candidates = []
@@ -12,6 +12,7 @@ with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     next(csvreader,None) 
 
+# create through the election result in order 
 
     for row in csvreader:
         total_votes += 1
@@ -25,7 +26,9 @@ with open(csvpath, newline='') as csvfile:
             except:
                 candidates.append(row[2])
                 votes_Per_Candidates.append(1)
-
+                
+                
+# print statement in order 
 results = []
 results.append("Election Results\n-------------------------")
 results.append(f"Total Votes: {total_votes}\n-------------------------")
@@ -41,6 +44,7 @@ for i in range(len(candidates)):
 
 results.append(f"-------------------------\nWinner: {winner}\n-------------------------")
 
+#print election results in txt 
 filename = 'Electtion Results.txt'
 with open(filename, 'w') as file:
     for result in results:
