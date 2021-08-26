@@ -7,7 +7,7 @@ candidates = []
 votes_Per_Candidates = []
 
 # Set path for file
-csvpath = Path("F:/Miley/Data Analyst/Week 3/3/PythonChallenge/Pyroll/Resources/election_data.csv")
+csvpath = Path("PythonChallenge","Pyroll","election_data.csv")
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     next(csvreader,None) 
