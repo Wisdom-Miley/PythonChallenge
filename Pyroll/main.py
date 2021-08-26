@@ -1,6 +1,6 @@
-import os
-import csv
+import os, csv
 from pathlib import Path
+
 # Create variable to the list 
 total_votes = 0
 candidates = []
