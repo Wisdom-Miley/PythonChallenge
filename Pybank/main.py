@@ -20,14 +20,14 @@ with open(input_file,newline="", encoding="utf-8") as budget:
     # Stored file contents
     for row in csvreader: 
 
-        # Append the total months and total profit to their corresponding lists
+        # append the month to the list 
         months.append(row[0])
         total_revenue.append(int(row[1]))
 
-    # Iterate through the profits in order to get the monthly change in profits
+    # create the revenue to the change 
     for i in range(len(total_revenue)-1):
         
-        # Take the difference between two months and append to monthly profit change
+        # take the diffence of profit
         monthly_revenue_change.append(total_revenue[i+1]-total_revenue[i])
         
 # added the max and min of the the montly revenue change list
@@ -35,7 +35,7 @@ max_increase_value = max(monthly_revenue_change)
 max_decrease_value = min(monthly_revenue_change)
 
 
-#calculator max and min in to monthly value and index fro max and 
+#calculator max and min in to monthly revenue 
 #use + 1 at the end since month change 
 max_increase_month = monthly_revenue_change.index(max(monthly_revenue_change)) + 1
 max_decrease_month = monthly_revenue_change.index(min(monthly_revenue_change)) + 1 
