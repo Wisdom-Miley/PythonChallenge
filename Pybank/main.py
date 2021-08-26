@@ -2,7 +2,7 @@ import os, csv
 from pathlib import Path 
 
 # Declare file location through pathlib
-input_file = Path("PythonChallenge","Pybank","Resources","budget_data.csv")
+input_file = Path("PythonChallenge","Pybank","budget_data.csv")
 # Create empty lists to iterate through specific rows for the following variables
 months = []
 total_revenue = []
