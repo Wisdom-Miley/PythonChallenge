@@ -2,7 +2,7 @@ import os, csv
 from pathlib import Path 
 
 # Declare file location through pathlib
-input_file = Path("F:/Miley/Data Analyst/Week 3/3/PythonChallenge/Pybank/Resources/budget_data.csv")
+input_file = Path("PythonChallenge","Pybank","Resources","budget_data.csv")
 # Create empty lists to iterate through specific rows for the following variables
 months = []
 total_revenue = []
@@ -51,7 +51,7 @@ print(f"Greatest Increase in Profits: {months[max_increase_month]} (${(str(max_i
 print(f"Greatest Decrease in Profits: {months[max_decrease_month]} (${(str(max_decrease_value))})")
 
 # Output files
-output_file = Path("F:/Miley/Data Analyst/Week 3/3/PythonChallenge/Pybank/Resources/financial analysis.txt")
+output_file = Path("PythonChallenge","Pybank","financial analysis.txt")
 
 with open(output_file,"w") as file:
     
