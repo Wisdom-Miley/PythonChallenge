@@ -11,7 +11,7 @@ monthly_revenue_change = []
 # Open csv with context manager
 with open(input_file,newline="", encoding="utf-8") as budget:
 
-     # Store the contents of budget_data.csv in the variable csvreader
+     # create cavreader as the variable 
     csvreader = csv.reader(budget,delimiter=",") 
 
     # Skip the header 
