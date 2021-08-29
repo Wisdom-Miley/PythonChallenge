@@ -1,10 +1,10 @@
+#import the file
 import os, csv
 from pathlib import Path
 
 # Create variable to the list 
 total_votes = 0
-candidates = []
-votes_Per_Candidates = []
+votes_per_candidate = {}
 
 # Set path for csvfile
 csvpath = Path("PythonChallenge","Pyroll","election_data.csv")
@@ -12,42 +12,41 @@ with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     next(csvreader,None) 
 
+    
 # create through the election result in order 
 
    for row in csvreader:
         total_votes += 1
-        if total_votes == 1:
-            candidates.append(row[2])
-            votes_Per_Candidates.append(1)
-         else:
-            try:
-                icandidate = candidates.index(row[2])
-                votes_Per_Candidates[icandidate] += 1
-            except:
-                candidates.append(row[2])
-                votes_Per_Candidates.append(1)
-                
-                
-# print statement in order  
-# the most votes percentage convert to the result 
-results = []
-results.append("Election Results\n-------------------------")
-results.append(f"Total Votes: {total_votes}\n-------------------------")
+        if row[2] not in votes_per_candidate:
+            votes_per_pandidate[row[2]] = 1
+        else:
+            votes_per_candidate[row[2]] += 1
+#print the result while using str and suse 3% format the total votes 
+print("Election Results")
+print("-------------------------")
+print("Total Votes: " + str(total_votes))
+print("-------------------------")
+for candidate, votes in votes_per_candidate.items():
+    print(candidate + ": " + "{:.3%}".format(votes/total_votes) + "   (" +  str(votes) + ")")
+print("-------------------------") 
+winner = max(votes_per_candidate, key=votes_per_candidate.get)
+print(file"Winner: {winner}")
 
-winner = candidates[0]
-most_votes = votes_Per_Candidates[0]
-for i in range(len(candidates)):
-    if votes_Per_Candidates[i] > most_votes:
-        winner = candidates[i]
-        most_votes = votes_Per_Candidates[i]
-    percent = 100 * votes_Per_Candidates[i] / total_votes
-    results.append(f"{candidates[i]}: {round(percent,3)} % ({votes_Per_Candidates[i]})")
-
-results.append(f"-------------------------\nWinner: {winner}\n-------------------------")
-
-#print election results in .txt 
-filename = 'Electtion Results.txt'
-with open(filename, 'w') as file:
-    for result in results:
-        print(result)
-        file.write(result + '\n')
+# write output file as result in txt 
+file = open("Election_results.txt", "w")
+file.write("Election Results")
+file.write('\n')
+file.write("-------------------------")
+file.write('\n')
+file.write("Total Votes: " + str(total_votes))
+file.write('\n')
+file.write("-------------------------")
+file.write('\n')
+for candidate, votes in votes_per_candidate.items():
+    file.write(candidate + ": " + "{:.3%}".format(votes/total_votes) + "   (" +  str(votes) + ")")
+    file.write('\n')
+file.write("-------------------------") 
+file.write('\n')
+file.write(f"Winner: {winner}")
+file.write("-------------------------") 
+file.write('\n')
